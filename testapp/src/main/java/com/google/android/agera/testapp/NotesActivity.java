@@ -15,33 +15,6 @@
  */
 package com.google.android.agera.testapp;
 
-import static android.graphics.BitmapFactory.decodeByteArray;
-import static android.os.StrictMode.ThreadPolicy;
-import static android.os.StrictMode.VmPolicy;
-import static android.os.StrictMode.setThreadPolicy;
-import static android.os.StrictMode.setVmPolicy;
-import static com.google.android.agera.Repositories.repositoryWithInitialValue;
-import static com.google.android.agera.RepositoryConfig.SEND_INTERRUPT;
-import static com.google.android.agera.Result.absentIfNull;
-import static com.google.android.agera.Suppliers.staticSupplier;
-import static com.google.android.agera.net.HttpFunctions.httpFunction;
-import static com.google.android.agera.net.HttpRequests.httpGetRequest;
-import static com.google.android.agera.rvadapter.RepositoryAdapter.repositoryAdapter;
-import static com.google.android.agera.testapp.NotesStore.notesStore;
-import static java.util.concurrent.Executors.newSingleThreadExecutor;
-
-import com.google.android.agera.Function;
-import com.google.android.agera.Merger;
-import com.google.android.agera.Receiver;
-import com.google.android.agera.Repository;
-import com.google.android.agera.Result;
-import com.google.android.agera.Supplier;
-import com.google.android.agera.Updatable;
-import com.google.android.agera.net.HttpRequest;
-import com.google.android.agera.net.HttpResponse;
-import com.google.android.agera.rvadapter.RepositoryAdapter;
-import com.google.android.agera.rvadapter.RepositoryPresenter;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -59,8 +32,35 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.agera.Function;
+import com.google.android.agera.Merger;
+import com.google.android.agera.Receiver;
+import com.google.android.agera.Repository;
+import com.google.android.agera.Result;
+import com.google.android.agera.Supplier;
+import com.google.android.agera.Updatable;
+import com.google.android.agera.net.HttpRequest;
+import com.google.android.agera.net.HttpResponse;
+import com.google.android.agera.rvadapter.RepositoryAdapter;
+import com.google.android.agera.rvadapter.RepositoryPresenter;
+
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+
+import static android.graphics.BitmapFactory.decodeByteArray;
+import static android.os.StrictMode.ThreadPolicy;
+import static android.os.StrictMode.VmPolicy;
+import static android.os.StrictMode.setThreadPolicy;
+import static android.os.StrictMode.setVmPolicy;
+import static com.google.android.agera.Repositories.repositoryWithInitialValue;
+import static com.google.android.agera.RepositoryConfig.SEND_INTERRUPT;
+import static com.google.android.agera.Result.absentIfNull;
+import static com.google.android.agera.Suppliers.staticSupplier;
+import static com.google.android.agera.net.HttpFunctions.httpFunction;
+import static com.google.android.agera.net.HttpRequests.httpGetRequest;
+import static com.google.android.agera.rvadapter.RepositoryAdapter.repositoryAdapter;
+import static com.google.android.agera.testapp.NotesStore.notesStore;
+import static java.util.concurrent.Executors.newSingleThreadExecutor;
 
 public final class NotesActivity extends Activity implements Updatable {
   public static final UrlToHttpRequest URL_TO_HTTP_REQUEST = new UrlToHttpRequest();

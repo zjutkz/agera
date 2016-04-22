@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="zjutkz.com.lazyloadtest.MainActivity">
+
+    <Button
+        android:text="load"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="load"/>
+
+    <Button
+        android:text="safeLoad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="safe_load"/>
+
+    <Button
+        android:text="clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clear"/>
+
+    <TextView
+        android:id="@+id/trigger"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="wait for trigger..."/>
+
+</LinearLayout>

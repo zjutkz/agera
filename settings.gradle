@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':agera'
+include ':agera', ':observabletest', ':lazyloadtest', ':terminaltest', ':functiontest', ':extensiontest'
 include ':extensions:content'
 include ':extensions:rvadapter'
 include ':extensions:database'
@@ -103,7 +103,7 @@ gradle.allprojects {
                     from android.sourceSets.main.java.srcDirs
                     classifier = 'sources'
                 }
-                task jacocoTestReport(type:JacocoReport, dependsOn: "testDebugUnitTest") {
+                task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
                     group = "Reporting"
                     description = "Generate Jacoco coverage reports"
                     def fileFilter = ['**/R.class', '**/R$*.class',

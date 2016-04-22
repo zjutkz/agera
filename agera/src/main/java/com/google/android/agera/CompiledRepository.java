@@ -15,6 +15,17 @@
  */
 package com.google.android.agera;
 
+import android.support.annotation.IntDef;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import com.google.android.agera.Common.WorkerHandler;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.util.List;
+import java.util.concurrent.Executor;
+
 import static com.google.android.agera.Common.WorkerHandler.MSG_CALL_ACKNOWLEDGE_CANCEL;
 import static com.google.android.agera.Common.WorkerHandler.MSG_CALL_MAYBE_START_FLOW;
 import static com.google.android.agera.Common.workerHandler;
@@ -26,17 +37,6 @@ import static com.google.android.agera.RepositoryConfig.CANCEL_FLOW;
 import static com.google.android.agera.RepositoryConfig.RESET_TO_INITIAL_VALUE;
 import static com.google.android.agera.RepositoryConfig.SEND_INTERRUPT;
 import static java.lang.Thread.currentThread;
-
-import com.google.android.agera.Common.WorkerHandler;
-
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.util.List;
-import java.util.concurrent.Executor;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 final class CompiledRepository extends BaseObservable

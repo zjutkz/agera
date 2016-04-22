@@ -15,18 +15,18 @@
  */
 package com.google.android.agera;
 
-import static com.google.android.agera.Common.WorkerHandler.MSG_LAST_REMOVED;
-import static com.google.android.agera.Common.WorkerHandler.MSG_UPDATE;
-import static com.google.android.agera.Common.workerHandler;
-import static com.google.android.agera.Preconditions.checkState;
-
-import com.google.android.agera.Common.WorkerHandler;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
+import com.google.android.agera.Common.WorkerHandler;
+
 import java.util.Arrays;
+
+import static com.google.android.agera.Common.WorkerHandler.MSG_LAST_REMOVED;
+import static com.google.android.agera.Common.WorkerHandler.MSG_UPDATE;
+import static com.google.android.agera.Common.workerHandler;
+import static com.google.android.agera.Preconditions.checkState;
 
 /**
  * A partial implementation of {@link Observable} that adheres to the threading contract between

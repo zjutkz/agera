@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="zjutkz.com.observabletest.MainActivity">
+
+    <Button
+        android:text="observable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="observable"/>
+
+    <Button
+        android:text="register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="register"/>
+
+    <Button
+        android:text="add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="add"/>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="waiting for trigger...."/>
+
+    <zjutkz.com.observabletest.MyTextView
+        android:id="@+id/my_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="custom waiting for trigger..."/>
+</LinearLayout>
+

@@ -15,16 +15,16 @@
  */
 package com.google.android.agera;
 
-import static com.google.android.agera.Preconditions.checkNotNull;
-
-import com.google.android.agera.BaseObservable.Worker;
-import com.google.android.agera.Observables.LowPassFilterObservable;
-
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 
+import com.google.android.agera.BaseObservable.Worker;
+import com.google.android.agera.Observables.LowPassFilterObservable;
+
 import java.lang.ref.WeakReference;
+
+import static com.google.android.agera.Preconditions.checkNotNull;
 
 final class Common {
   static final Function IDENTITY_FUNCTION = new IdentityFunction();

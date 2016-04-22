@@ -15,18 +15,18 @@
  */
 package com.google.android.agera;
 
-import static com.google.android.agera.Common.workerHandler;
-import static com.google.android.agera.Preconditions.checkNotNull;
-
-import com.google.android.agera.Common.WorkerHandler;
-
 import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.google.android.agera.Common.WorkerHandler;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.google.android.agera.Common.workerHandler;
+import static com.google.android.agera.Preconditions.checkNotNull;
 
 /**
  * Utility methods for obtaining {@link Observable} instances.
