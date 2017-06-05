@@ -3,6 +3,7 @@ package zjutkz.com.terminaltest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -44,17 +45,19 @@ public class MainActivity extends AppCompatActivity implements Updatable{
         }
     };
 
-    private Supplier<Result<Integer>> saveStrSupplier = new Supplier<Result<Integer>>() {
+    private Supplier<Result<Integer>> safeStrSupplier = new Supplier<Result<Integer>>() {
         @NonNull
         @Override
         public Result<Integer> get() {
-            try{
-                return Result.success(1/ 0);
-            }catch (ArithmeticException e){
-                return Result.failure(e);
-            }
+            Integer[] errorArray = new Integer[]{1};
+
+            return Result.present(errorArray[1]);
         }
     };
+
+    public Integer errorMake() throws RuntimeException{
+        throw new RuntimeException("你抓我，如果你抓到我，我就让你嘿嘿嘿");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +81,12 @@ public class MainActivity extends AppCompatActivity implements Updatable{
         safeRepository = Repositories.repositoryWithInitialValue(Result.<Integer>absent())
                 .observe()
                 .onUpdatesPerLoop()
-                .attemptGetFrom(saveStrSupplier).orEnd(new Function<Throwable, Result<Integer>>() {
+                .attemptGetFrom(safeStrSupplier).orEnd(new Function<Throwable, Result<Integer>>() {
                     @NonNull
                     @Override
                     public Result<Integer> apply(@NonNull Throwable input) {
-                        return Result.success(2222);
+                        Log.d("TAG", input.getMessage());
+                        return Result.present(1);
                     }
                 })
                 .thenTransform(new Function<Integer, Result<Integer>>() {

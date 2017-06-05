@@ -15,8 +15,8 @@
  */
 package com.google.android.agera.database;
 
-import static com.google.android.agera.Preconditions.checkNotNull;
-import static com.google.android.agera.Preconditions.checkState;
+import android.content.ContentValues;
+import android.support.annotation.NonNull;
 
 import com.google.android.agera.database.SqlRequestCompilerStates.DBArgumentCompile;
 import com.google.android.agera.database.SqlRequestCompilerStates.DBColumnCompile;
@@ -24,8 +24,8 @@ import com.google.android.agera.database.SqlRequestCompilerStates.DBColumnWhereC
 import com.google.android.agera.database.SqlRequestCompilerStates.DBSql;
 import com.google.android.agera.database.SqlRequestCompilerStates.DBTable;
 
-import android.content.ContentValues;
-import android.support.annotation.NonNull;
+import static com.google.android.agera.Preconditions.checkNotNull;
+import static com.google.android.agera.Preconditions.checkState;
 
 final class SqlRequestCompiler
     implements DBTable, DBSql, DBArgumentCompile, DBColumnCompile, DBColumnWhereCompile {

@@ -21,10 +21,10 @@
         android:onClick="register"/>
 
     <Button
-        android:text="add"
+        android:text="clear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="add"/>
+        android:onClick="clear"/>
 
     <TextView
         android:id="@+id/tv"

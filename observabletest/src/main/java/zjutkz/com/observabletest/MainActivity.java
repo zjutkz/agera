@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.agera.Function;
-import com.google.android.agera.Observable;
 import com.google.android.agera.Repositories;
 import com.google.android.agera.Repository;
 import com.google.android.agera.Supplier;
@@ -22,26 +21,34 @@ public class MainActivity extends AppCompatActivity implements Updatable{
 
     private Repository<String> repository;
 
-    private Observable observable = new Observable() {
-        @Override
-        public void addUpdatable(@NonNull Updatable updatable) {
-            Log.d("TAG", "addUpdatable: " + updatable.toString());
-            //updatable.update();
-        }
+    private int index = 1;
 
-        @Override
-        public void removeUpdatable(@NonNull Updatable updatable) {
+    private int count = 0;
 
+
+    private Repository<String> observable = Repositories.repositoryWithInitialValue("a")
+            .observe()
+            .onUpdatesPerLoop()
+            .thenGetFrom(new Supplier<String>() {
+                @NonNull
+                @Override
+                public String get() {
+                    return "a";
+                }
+            })
+            .compile();
+
+    private Updatable updatable = new Updatable() {
+        @Override
+        public void update() {
+            Log.d("aaa", "update: " + observable.get());
         }
     };
-
-    private int count = 1;
-
     private Supplier<Integer> supplier = new Supplier<Integer>() {
         @NonNull
         @Override
         public Integer get() {
-            return count++;
+            return 1;
         }
     };
 
@@ -52,12 +59,36 @@ public class MainActivity extends AppCompatActivity implements Updatable{
 
         trigger = (TextView)findViewById(R.id.tv);
         customTrigger = (MyTextView)findViewById(R.id.my_tv);
+
+        //observable.addUpdatable(updatable);
+        /*observable = Repositories.repositoryWithInitialValue("a")
+                .observe()
+                .onUpdatesPerLoop()
+                .thenGetFrom(new Supplier<String>() {
+                    @NonNull
+                    @Override
+                    public String get() {
+                        return "b";
+                    }
+                })
+                .compile();
+
+        Updatable updatable = new Updatable() {
+            @Override
+            public void update() {
+                Log.d("aaa", "update: ");
+            }
+        };
+
+        observable.addUpdatable(updatable);*/
     }
 
     public void observable(View view){
         repository = Repositories.repositoryWithInitialValue("default")
                 .observe(observable)
+                //.onUpdatesPer(800)
                 .onUpdatesPerLoop()
+                .goLazy()
                 .getFrom(supplier)
                 .transform(new Function<Integer, Integer>() {
 
@@ -96,13 +127,13 @@ public class MainActivity extends AppCompatActivity implements Updatable{
                 repository.removeUpdatable(MainActivity.this);
             }
         },200);*/
-        customTrigger.postDelayed(new Runnable() {
+        /*customTrigger.postDelayed(new Runnable() {
             @Override
             public void run() {
-                repository.removeUpdatable(MainActivity.this);
+                //repository.removeUpdatable(MainActivity.this);
                 repository.addUpdatable(customTrigger);
             }
-        }, 1000);
+        }, 1000);*/
 
         /*observable.addUpdatable(this);
         customTrigger.postDelayed(new Runnable() {
@@ -113,15 +144,16 @@ public class MainActivity extends AppCompatActivity implements Updatable{
         },1000);*/
     }
 
-    public void add(View view){
-        count++;
+    public void clear(View view){
+        repository.removeUpdatable(MainActivity.this);
         //observable.addUpdatable();
     }
 
     @Override
     public void update() {
         trigger.setText(repository.get());
-        //trigger.setText("update!!" + count++);
+        repository.removeUpdatable(MainActivity.this);
+        //trigger.setText("update!!" + index++);
     }
 
     @Override

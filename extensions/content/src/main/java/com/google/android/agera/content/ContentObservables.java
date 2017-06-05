@@ -15,15 +15,6 @@
  */
 package com.google.android.agera.content;
 
-import static android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import static com.google.android.agera.Observables.updateDispatcher;
-import static com.google.android.agera.Preconditions.checkNotNull;
-
-import com.google.android.agera.Observable;
-import com.google.android.agera.Updatable;
-import com.google.android.agera.ActivationHandler;
-import com.google.android.agera.UpdateDispatcher;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,9 +23,18 @@ import android.content.SharedPreferences;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
+import com.google.android.agera.ActivationHandler;
+import com.google.android.agera.Observable;
+import com.google.android.agera.Updatable;
+import com.google.android.agera.UpdateDispatcher;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import static android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import static com.google.android.agera.Observables.updateDispatcher;
+import static com.google.android.agera.Preconditions.checkNotNull;
 
 /**
  * Utility methods for obtaining {@link Observable} instances.
@@ -70,7 +70,7 @@ public final class ContentObservables {
     return new SharedPreferencesObservable(preferences, keys);
   }
 
-  private static final class BroadcastObservable extends BroadcastReceiver
+  public static final class BroadcastObservable extends BroadcastReceiver
       implements ActivationHandler, Observable {
     @NonNull
     private final UpdateDispatcher updateDispatcher;

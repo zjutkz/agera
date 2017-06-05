@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':agera', ':observabletest', ':lazyloadtest', ':terminaltest', ':functiontest', ':extensiontest'
+include ':agera', ':observabletest', ':lazyloadtest', ':terminaltest', ':functiontest', ':extensiontest', ':broadcasttest', ':delayregistrationtest', ':guide'
 include ':extensions:content'
 include ':extensions:rvadapter'
 include ':extensions:database'

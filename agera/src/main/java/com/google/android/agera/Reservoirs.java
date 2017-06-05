@@ -15,9 +15,6 @@
  */
 package com.google.android.agera;
 
-import static com.google.android.agera.Preconditions.checkNotNull;
-import static com.google.android.agera.Result.absentIfNull;
-
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,6 +22,9 @@ import android.support.annotation.Nullable;
 import java.util.ArrayDeque;
 import java.util.PriorityQueue;
 import java.util.Queue;
+
+import static com.google.android.agera.Preconditions.checkNotNull;
+import static com.google.android.agera.Result.absentIfNull;
 
 /**
  * Utility methods for creating {@link Reservoir} instances.

@@ -268,6 +268,7 @@ final class CompiledRepository extends BaseObservable
    *     cannot be delivered here.
    */
   private void runFlowFrom(final int index, final boolean asynchronously) {
+
     final Object[] directives = this.directives;
     final int length = directives.length;
     int i = index;

@@ -15,6 +15,27 @@
  */
 package com.google.android.agera.testapp;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.support.annotation.NonNull;
+
+import com.google.android.agera.Function;
+import com.google.android.agera.Merger;
+import com.google.android.agera.Observable;
+import com.google.android.agera.Receiver;
+import com.google.android.agera.Repository;
+import com.google.android.agera.Reservoir;
+import com.google.android.agera.Result;
+import com.google.android.agera.Supplier;
+import com.google.android.agera.Updatable;
+import com.google.android.agera.database.SqlDeleteRequest;
+import com.google.android.agera.database.SqlInsertRequest;
+import com.google.android.agera.database.SqlRequest;
+import com.google.android.agera.database.SqlUpdateRequest;
+
+import java.util.List;
+import java.util.concurrent.Executor;
+
 import static com.google.android.agera.Functions.staticFunction;
 import static com.google.android.agera.Mergers.staticMerger;
 import static com.google.android.agera.Repositories.repositoryWithInitialValue;
@@ -37,27 +58,6 @@ import static com.google.android.agera.testapp.NotesSqlDatabaseSupplier.NOTES_TA
 import static com.google.android.agera.testapp.NotesSqlDatabaseSupplier.databaseSupplier;
 import static java.util.Collections.emptyList;
 import static java.util.concurrent.Executors.newSingleThreadExecutor;
-
-import com.google.android.agera.Function;
-import com.google.android.agera.Merger;
-import com.google.android.agera.Observable;
-import com.google.android.agera.Receiver;
-import com.google.android.agera.Repository;
-import com.google.android.agera.Reservoir;
-import com.google.android.agera.Result;
-import com.google.android.agera.Supplier;
-import com.google.android.agera.Updatable;
-import com.google.android.agera.database.SqlDeleteRequest;
-import com.google.android.agera.database.SqlInsertRequest;
-import com.google.android.agera.database.SqlRequest;
-import com.google.android.agera.database.SqlUpdateRequest;
-
-import android.content.Context;
-import android.database.Cursor;
-import android.support.annotation.NonNull;
-
-import java.util.List;
-import java.util.concurrent.Executor;
 
 /**
  * Encapsulates all database interactions for {@link Note}s. Getting a list of all notes is
@@ -149,7 +149,9 @@ final class NotesStore {
     // active to still be processed asap.
     final Updatable dummyUpdatable = new Updatable() {
       @Override
-      public void update() {}
+      public void update() {
+
+      }
     };
     writeReaction.addUpdatable(dummyUpdatable);
 

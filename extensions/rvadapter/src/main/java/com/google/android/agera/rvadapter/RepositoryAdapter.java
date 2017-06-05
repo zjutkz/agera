@@ -15,23 +15,23 @@
  */
 package com.google.android.agera.rvadapter;
 
-import static com.google.android.agera.Observables.compositeObservable;
-import static com.google.android.agera.Preconditions.checkArgument;
-import static com.google.android.agera.Preconditions.checkNotNull;
-
-import com.google.android.agera.Observable;
-import com.google.android.agera.Repository;
-import com.google.android.agera.Updatable;
-
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.google.android.agera.Observable;
+import com.google.android.agera.Repository;
+import com.google.android.agera.Updatable;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.google.android.agera.Observables.compositeObservable;
+import static com.google.android.agera.Preconditions.checkArgument;
+import static com.google.android.agera.Preconditions.checkNotNull;
 
 /**
  * A specialized {@link RecyclerView.Adapter} that presents the data from a sequence of
@@ -174,7 +174,6 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
    */
   public final void startObserving() {
     observable.addUpdatable(this);
-    update();
   }
 
   /**

@@ -79,6 +79,9 @@ public abstract class BaseObservable implements Observable {
    */
   protected void observableDeactivated() {}
 
+  public Updatable getUpdatable(){
+    return worker.getUpdatable();
+  }
   /**
    * Worker and synchronization lock behind a {@link BaseObservable}.
    */
@@ -102,6 +105,9 @@ public abstract class BaseObservable implements Observable {
       this.size = 0;
     }
 
+    public Updatable getUpdatable(){
+      return (Updatable)updatablesAndHandlers[0];
+    }
     synchronized void addUpdatable(@NonNull final Updatable updatable) {
       add(updatable, workerHandler());
       if (size == 1) {

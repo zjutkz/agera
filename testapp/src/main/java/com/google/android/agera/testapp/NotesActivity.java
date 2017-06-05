@@ -16,7 +16,6 @@
 package com.google.android.agera.testapp;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -99,7 +98,7 @@ public final class NotesActivity extends Activity implements Updatable {
     findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(@NonNull final View view) {
-        final EditText editText = new EditText(view.getContext());
+        /*final EditText editText = new EditText(view.getContext());
         editText.setId(R.id.edit);
         new AlertDialog.Builder(view.getContext())
             .setTitle(R.string.add_note)
@@ -110,7 +109,8 @@ public final class NotesActivity extends Activity implements Updatable {
                 notesStore.insertNoteFromText(editText.getText().toString());
               }
             })
-            .create().show();
+            .create().show();*/
+        notesStore.insertNoteFromText("edit");
       }
     });
 

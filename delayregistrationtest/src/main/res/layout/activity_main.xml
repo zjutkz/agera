@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="zjutkz.com.delayregistrationtest.MainActivity">
+
+    <Button
+        android:text="trigger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="trigger"/>
+
+    <Button
+        android:text="delay register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="delay_register"/>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="wait for trigger..."
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <zjutkz.com.delayregistrationtest.MyTextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="wait for trigger..."
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+</LinearLayout>
